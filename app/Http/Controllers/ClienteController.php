@@ -5,105 +5,70 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-/**
- * Class ClienteController
- * @package App\Http\Controllers
- */
+
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Vista de Tabla
     public function index()
     {
-        $clientes = Cliente::paginate();
-
-        return view('cliente.index', compact('clientes'))
-            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
+        $cliente = Cliente::paginate(10);//el numero de filas
+        return view('cliente.vistaCliente', compact('cliente'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //Formulario
+    public function createCliente()
     {
-        $cliente = new Cliente();
-        return view('cliente.create', compact('cliente'));
+        return view('cliente.formCliente');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    //Guardar Cliente
+    public function saveCliente(Request $request)
     {
-        request()->validate(Cliente::$rules);
+        $cliente = $this->validate($request, [
+            "nit"          => "required",
+            "cnombre"      => "required",
+            "capellido"    => "required",
+            "ctelefono"    => "required",
+            "cemail"       => "required",
+            "cdireccion"   => "required",
+            "num_servicio" => "required"
+        ]);
 
-        $cliente = Cliente::create($request->all());
+        Cliente::create([
+            "nit"          => $cliente["nit"],
+            "cnombre"      => $cliente["cnombre"],
+            "capellido"    => $cliente["capellido"],
+            "ctelefono"    => $cliente["ctelefono"],
+            "cemail"       => $cliente["cemail"],
+            "cdireccion"   => $cliente["cdireccion"],
+            "num_servicio" => $cliente["num_servicio"],
+        ]);
 
-        return redirect()->route('clientes.index')
-            ->with('success', 'Cliente created successfully.');
+        return redirect('/readcliente')->with('Guardado', "Cliente Registrado");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    //Formulario de edicion
+    public function editCliente($nit)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::findOrFail($nit);
 
-        return view('cliente.show', compact('cliente'));
+        return view('cliente.modifyCliente', compact('cliente'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    //Guardar edicion
+    public function updateCliente(Request $request, $nit)
     {
-        $cliente = Cliente::find($id);
 
-        return view('cliente.edit', compact('cliente'));
+        $cliente = request()->except((['_token', '_method']));
+        Cliente::where('nit', '=', $nit)->update($cliente);
+
+        return redirect('/readcliente')->with('Editado', "Cliente Editado");
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Cliente $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cliente $cliente)
+    //Eliminar cliente
+    public function deleteCliente($nit)
     {
-        request()->validate(Cliente::$rules);
-
-        $cliente->update($request->all());
-
-        return redirect()->route('clientes.index')
-            ->with('success', 'Cliente updated successfully');
-    }
-
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
-    public function destroy($id)
-    {
-        $cliente = Cliente::find($id)->delete();
-
-        return redirect()->route('clientes.index')
-            ->with('success', 'Cliente deleted successfully');
+        Cliente::destroy($nit);
+        return redirect('/readcliente')->with('Eliminado', "Cliente Eliminado");
     }
 }
