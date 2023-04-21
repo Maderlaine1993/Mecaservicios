@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CompraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +30,8 @@ Route::get('/readcliente',  [ClienteController::class, 'index'])->name('index')-
 Route::get('/clientedit/{nit}',  [ClienteController::class, 'editCliente'])->name('editCliente')->middleware('auth'); //Formulario de edicion
 Route::patch('/actualizarC/{nit}',[ClienteController::class, 'updateCliente'])->name('updateCliente')->middleware('auth');//Guardar la edicion
 Route::delete('delatecliente/{nit}', [ClienteController::class,'deleteCliente'])->name('deleteCliente')->middleware('auth'); //Eliminar un Cliente
+
+/* Routes de Compras */
+Route::get('/readcompras',  [CompraController::class, 'index'])->name('index')->middleware('auth');;//Lista de Compras
+
 
