@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\trabajador;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class LoginController extends Controller
 {
@@ -36,5 +41,35 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'tnum' => ['required', 'numeric'],
+            'contrasenia' => ['required'],
+        ]);
+
+        $trabajador = trabajador::where('tnum', $credentials['tnum'])
+            ->where('contrasenia', $credentials['contrasenia'])
+            ->first();
+
+        if (!$trabajador) {
+            throw ValidationException::withMessages([
+                'tnum' => __('auth.failed'),
+            ]);
+        }
+
+        if ($trabajador->rol_id == 1) {
+            Auth::login($trabajador);
+            return redirect('/home');
+        } elseif ($trabajador->rol_id == 3) {
+            Auth::login($trabajador);
+            return redirect('/home');
+        } else {
+            throw ValidationException::withMessages([
+                'tnum' => __('auth.failed'),
+            ]);
+        }
     }
 }

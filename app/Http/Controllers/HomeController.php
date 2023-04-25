@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $trabajador = Auth::guard()->user();
+
+        if ($trabajador->rol_id == 1) {
+            return view('home');
+        } elseif ($trabajador->rol_id == 3) {
+            return view('home_dos');
+        } else {
+            return redirect('/login');
+        }
     }
 }
