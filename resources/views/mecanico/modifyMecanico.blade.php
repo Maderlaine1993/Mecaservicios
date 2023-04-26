@@ -21,19 +21,19 @@
                     <form action=" {{ route('updateMecanico', $mecanico->id_mec) }}" method="POST">
                         @csrf @method("PATCH")
 
-                        <div class=" card-header text-center" style="background-color: #005555">
-                            <h2 style="color: #FEFBE7"><i class="fas fa-user-check"></i> Editar Mecanico</h2>
+                        <div class=" card-header text-center" style="background-color: #a4c2f4; border-color: #8B716C">
+                            <h2 style="color: #8B716C"><i class="fas fa-user-cog"></i></i> Editar Mecanico</h2>
                         </div>
                         <br>
                         <div class="col-md-10 offset-md-1">
                             <div class="col-lg">
-                                <label for="" class="col-2">ID Mecanico</label>
+                                <label for="" class="col-4">ID Mecanico</label>
                                 <input type="text" name="id_mec" class="form-control"
                                        value="{{$mecanico->id_mec}}">
                             </div>
                             <br>
                             <div class="col-lg">
-                                <label for="" class="col-2">Nombre</label>
+                                <label for="" class="col-4">Nombre</label>
                                 <input type="text" name="mnombre" class="form-control"
                                        value="{{$mecanico->mnombre}}">
                             </div>

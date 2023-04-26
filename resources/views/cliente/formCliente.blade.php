@@ -24,12 +24,12 @@
                     </div>
                 @endif
 
-                <div class="card">
+                <div class="card" style="border-color: #8B716C">
                     <form action=" {{ route('cliente.saveCliente') }}" method="POST">
                         @csrf
 
-                        <div class=" card-header text-center" style="background-color: #005555">
-                            <h2 style="color: #FEFBE7"><i class="fas fa-user-check"></i> Registrar Cliente</h2>
+                        <div class=" card-header text-center" style="background-color: #a4c2f4; border-color: #8B716C">
+                            <h2 style="color: #8B716C"><i class="fas fa-user-check"></i> Registrar Cliente</h2>
                         </div>
 
                         <div class="card-body">
