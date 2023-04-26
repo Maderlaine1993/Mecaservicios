@@ -5,7 +5,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 ml-5">
-                <h1 class="text-center mt-5" style="color: #005555"><i style="color:#005555"></i> NOTIFICACIONES </h1><br>
+                <a href="/home" style="color: #2ECC71;font-size: 35px">
+                    <i class="fas fa-arrow-alt-circle-left" style="background-color:  white; border-radius: 100px;"></i>
+                </a>
+                <h1 class="text-center mt-5"><i style="color:#005555"></i>
+                    <img src="https://i.ibb.co/tJXDNCM/Notificaciones.png" width="60" height="60">
+                    NOTIFICACIONES
+                </h1>
+                <br>
 
                 <!--Mensaje de Eliminado-->
                 @if(session('Eliminado'))
@@ -15,17 +22,17 @@
                 @endif
 
                 <table class="table table-light table-bordered table-hover text-center">
-                    <thead style="color: #069a8e">
+                    <thead style="color: #8B716C; border-color: #8B716C">
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Descripcion</th>
-                        <th>Enviar</th>
+                        <th style="background-color: #a4c2f4">ID</th>
+                        <th style="background-color: #a4c2f4">Nombre</th>
+                        <th style="background-color: #a4c2f4">Correo</th>
+                        <th style="background-color: #a4c2f4">Descripcion</th>
+                        <th style="background-color: #a4c2f4">Enviar</th>
                     </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody style="border-color: #8B716C">
                     @foreach($notificacion as $notificaciones)
                         <tr>
                             <td>{{$notificaciones->id_noti}}</td>
