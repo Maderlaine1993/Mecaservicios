@@ -6,6 +6,7 @@ use App\Http\Controllers\CompraController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MecanicoController;
 use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\RepuestoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +49,12 @@ Route::get('/readmecanico',  [MecanicoController::class, 'index'])->name('index'
 Route::get('/mecanicoedit/{id_mec}',  [MecanicoController::class, 'editMecanico'])->name('editMecanico')->middleware('auth');; //Formulario de Mecanico
 Route::patch('/actualizarM/{id_mec}',[MecanicoController::class, 'updateMecanico'])->name('updateMecanico')->middleware('auth');;//Guardar la edicion
 Route::delete('delatemecanio/{id_mec}', [MecanicoController::class,'deleteMecanico'])->name('deleteMecanico')->middleware('auth');; //Eliminar un Mecanico
+
+/* Routes de Repuestos */
+Route::get('/formRepuesto', [RepuestoController::class, 'createRepuesto'])->name('createRepuesto')->middleware('auth');;//Formulario de Registro
+Route::post('/saveRepuesto', [RepuestoController::class, 'saveRepuesto'])->name('repuesto.saveRepuesto')->middleware('auth');;//Guardar el formulario
+Route::get('/readRepuesto',  [RepuestoController::class, 'indexRepuesto'])->name('indexRepuesto')->middleware('auth');;//Lista de repuestos
+Route::get('/Repuestoedit/{id_repuesto}',  [RepuestoController::class, 'editRepuesto'])->name('editRepuesto')->middleware('auth');; //Formulario de edicion
+Route::patch('/actualizarRe/{id_repuesto}',[RepuestoController::class, 'updateRepuesto'])->name('updateRepuesto')->middleware('auth');;//Guardar la edicion
+Route::delete('deleteRepuesto/{id_repuesto}', [RepuestoController::class,'deleteRepuesto'])->name('deleteRepuesto')->middleware('auth');; //Eliminar un repuesto
+
