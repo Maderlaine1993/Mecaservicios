@@ -51,7 +51,7 @@
                             <br>
                             <br>
                             <div class="text-center">
-                                <a href="#">
+                                <a href="/readRepuesto">
                                     <img src="https://i.ibb.co/F0Wytfg/Repuestos.png" width="100" height="100">
                                 </a>
                                 <h5>Repuestos</h5>
