@@ -82,7 +82,7 @@
                     <br>
                     <br>
                     <div class="text-center">
-                        <a href="#">
+                        <a href="/Servicios/list">
                             <img src="https://i.ibb.co/TtCr69L/Servicios.png" width="100" height="100">
                         </a>
                         <h5>Servicio</h5>

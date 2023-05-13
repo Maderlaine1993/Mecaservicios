@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MecanicoController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\RepuestoController;
+use App\Http\Controllers\ServicioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,3 +59,10 @@ Route::get('/Repuestoedit/{id_repuesto}',  [RepuestoController::class, 'editRepu
 Route::patch('/actualizarRe/{id_repuesto}',[RepuestoController::class, 'updateRepuesto'])->name('updateRepuesto')->middleware('auth');;//Guardar la edicion
 Route::delete('deleteRepuesto/{id_repuesto}', [RepuestoController::class,'deleteRepuesto'])->name('deleteRepuesto')->middleware('auth');; //Eliminar un repuesto
 
+/* Routes de Servicios */
+Route::get('/Servicios/list', [ServicioController::class, 'indexServicio'])->name('indexServicio')->middleware('auth');; //Vista de los Servicios
+Route::get('/Servicios/New', [ServicioController::class, 'createServicio'])->name('createServicio')->middleware('auth');;//Formulario para Crear Servicios
+Route::post('/Servicios/New/Save', [ServicioController::class, 'saveServicio'])->name('servicio.saveServicio')->middleware('auth');;//Guardar el formulario de Servicios
+Route::get('/Servicios/Modify/{id_repuesto}',  [ServicioController::class, 'editServicio'])->name('editServicio')->middleware('auth');; //Formulario de edicion
+Route::patch('/Servicios/Modify/Update/{id_repuesto}',[ServicioController::class, 'updateServicio'])->name('updateServicio')->middleware('auth');;//Guardar la edicion
+Route::delete('Sericios/Delete/{id_repuesto}', [ServicioController::class,'deleteServicio'])->name('deleteServicio')->middleware('auth');; //Eliminar un repuesto
