@@ -7,79 +7,61 @@ use Illuminate\Http\Request;
 
 class TrabajadorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function indexTrabajador()
     {
-        //
+        $trabajador = trabajador::paginate(10);//el numero de filas
+        return view('trabajador.viewTrabajador', compact('trabajador'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function createTrabajador()
     {
-        //
+        return view('trabajador.formTrabajador');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+  
+    public function saveTrabajador(Request $request)
     {
-        //
+        $trabajador = $this->validate($request, [
+            "tnum"         => "required",
+            "contrasenia"  => "required",
+            "tnombre"      => "required",
+            "tapellido"    => "required",
+            "rol_id"       => "required",      
+        ]);
+
+        trabajador::create([
+            "tnum"           => $trabajador["tnum"],
+            "contrasenia"    => $trabajador["contrasenia"],
+            "tnombre"        => $trabajador["tnombre"],
+            "tapellido"      => $trabajador["tapellido"],
+            "rol_id"         => $trabajador["rol_id"],
+        ]);
+
+        return redirect('/readTrabajador')->with('Guardado', "Trabajador Registrado");
+    }
+ 
+    public function editTrabajador($tnum)
+    {
+        $trabajador = trabajador::findOrFail($tnum);
+
+        return view('trabajador.modifyTrabajador', compact('trabajador'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\trabajador  $trabajador
-     * @return \Illuminate\Http\Response
-     */
-    public function show(trabajador $trabajador)
+
+    public function updateTrabajador(Request $request, $tnum)
     {
-        //
+        $trabajador = request()->except((['_token', '_method']));
+        trabajador::where('tnum', '=', $tnum)->update($trabajador);
+
+        return redirect('/readTrabajador')->with('Editado', "Trabajador editado");
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\trabajador  $trabajador
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(trabajador $trabajador)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\trabajador  $trabajador
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, trabajador $trabajador)
+    public function deleteTrabajador($tnum)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\trabajador  $trabajador
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(trabajador $trabajador)
-    {
-        //
+        trabajador::destroy($tnum);
+        return redirect('/readTrabajador')->with('Eliminado', "Trabajador Eliminado");
     }
 }

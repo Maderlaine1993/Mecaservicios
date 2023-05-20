@@ -8,6 +8,7 @@ use App\Http\Controllers\MecanicoController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\TrabajadorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,3 +67,11 @@ Route::post('/Servicios/New/Save', [ServicioController::class, 'saveServicio'])-
 Route::get('/Servicios/Modify/{id_repuesto}',  [ServicioController::class, 'editServicio'])->name('editServicio')->middleware('auth');; //Formulario de edicion
 Route::patch('/Servicios/Modify/Update/{id_repuesto}',[ServicioController::class, 'updateServicio'])->name('updateServicio')->middleware('auth');;//Guardar la edicion
 Route::delete('Sericios/Delete/{id_repuesto}', [ServicioController::class,'deleteServicio'])->name('deleteServicio')->middleware('auth');; //Eliminar un repuesto
+
+/* Routes de Trabajador */  
+Route::get('/formTrabajador', [TrabajadorController::class, 'createTrabajador'])->name('createTrabajador')->middleware('auth');;//Formulario de Registro
+Route::post('/saveTrabajador', [TrabajadorController::class, 'saveTrabajador'])->name('trabajador.saveTrabajador')->middleware('auth');;//Guardar el formulario
+Route::get('/readTrabajador', [TrabajadorController::class, 'indexTrabajador'])->name('indexTrabajador')->middleware('auth');;//Lista de trabajadores
+Route::get('/Trabajadoredit/{tnum}',  [TrabajadorController::class, 'editTrabajador'])->name('editTrabajador')->middleware('auth');; //Formulario de edicion
+Route::patch('/actualizarTrab/{tnum}',[TrabajadorController::class, 'updateTrabajador'])->name('updateTrabajador')->middleware('auth');;//Guardar la edicion
+Route::delete('deleteTrabajador/{tnum}', [TrabajadorController::class,'delete'])->name('deleteTrabajador')->middleware('auth');; //Eliminar un trabajador

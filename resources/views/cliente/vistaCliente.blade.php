@@ -8,7 +8,7 @@
                 <a href="/home" style="color: #2ECC71;font-size: 35px">
                     <i class="fas fa-arrow-alt-circle-left" style="background-color:  white; border-radius: 100px;"></i>
                 </a>
-                <h1 class="text-center mt-5" >
+                <h1 class="text-center mt-5" style= "color:white">
                     <img src="https://i.ibb.co/TkM3xF4/Diagrama-en-blanco-2.png" width="100" height="100">
                     </a>CLIENTES </h1>
                 <br>

@@ -3,7 +3,7 @@
 <div class="container">
    <div class="row justify-content-center">
 
-   <div class="text-center">
+   <div class="text-center" style= "color:white">
        <h1><b>MECASERVICOS VVA</b></h1>
    </div>
     <div class="row">
@@ -39,7 +39,7 @@
                     <br>
                     <br>
                     <div class="text-center">
-                        <a href="#">
+                        <a href="/readTrabajador">
                             <img src="https://i.ibb.co/JQdCFp4/Trabajadores.png" width="100" height="100">
                         </a>
                         <h5>Trabajadores</h5>
