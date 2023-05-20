@@ -8,7 +8,7 @@
                 <a href="/home" style="color: #2ECC71;font-size: 35px">
                     <i class="fas fa-arrow-alt-circle-left" style="background-color:  white; border-radius: 100px;"></i>
                 </a>
-                <h1 class="text-center mt-5"><i style="color:#005555"></i>
+                <h1 class="text-center mt-5" style= "color:white"><i style="color:#005555"></i>
                     <img src="https://i.ibb.co/tJXDNCM/Notificaciones.png" width="60" height="60">
                     NOTIFICACIONES
                 </h1>
