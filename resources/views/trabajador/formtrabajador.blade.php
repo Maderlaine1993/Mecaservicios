@@ -33,12 +33,19 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="col-lg">
-                                <input type="text" class="form-control" value="{{old('tnum')}}"
-                                       placeholder="Num" name="tnum">
+                            <div class="row">
+                                <div class="col-lg">
+                                    <input type="text" name="tnombre" class="form-control"
+                                           value="{{old('tnombre')}}" placeholder="Nombre">
+                                </div>
+
+                                <div class="col-lg">
+                                    <input type="text" name="tapellido" class="form-control"
+                                           value="{{old('tapellido')}}" placeholder="Apellido">
+                                </div>
+
                             </div>
                             <br>
-
                             <div class="row">
                                 <div class="col-lg">
                                     <input type="text" name="contrasenia" class="form-control"
@@ -46,22 +53,17 @@
                                 </div>
 
                                 <div class="col-lg">
-                                    <input type="text" name="tnombre" class="form-control"
-                                           value="{{old('tnombre')}}" placeholder="Nombre">
+                                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"></label>
+                                    <select name="rol_id" class="form-select" aria-label="Default select example" value="{{old('rol_id')}}" style="color: #839192">
+                                        <option class="align-self-center" value="" >Rol</option>
+
+                                        @foreach($rol as $rols)
+                                            <option style="color: black" value="{{$rols->id_rol}}">{{$rols->descripcion}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <br>
-                            <div class="row">
-                                <div class="col-lg">
-                                    <input type="text" name="tapellido" class="form-control"
-                                           value="{{old('tapellido')}}" placeholder="Apellido">
-                                </div>
-
-                                <div class="col-lg">
-                                    <input type="text" name="rol_id" class="form-control"
-                                           value="{{old('rol_id')}}" placeholder="Rol ID">
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="row form-group">
                                     <button id="Guardado" type="submit" class="btn btn-outline-info col-md-4 offset-2 mr-3" onclick="save()">
