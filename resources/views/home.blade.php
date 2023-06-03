@@ -27,7 +27,7 @@
                     <br>
                     <br>
                     <div class="text-center">
-                        <a href="#">
+                        <a href="/readVehiculo">
                             <img src="https://i.ibb.co/MfMB6Gq/Vehiculo.png" width="100" height="100">
                         </a>
                         <h5>Vehiculos</h5>
