@@ -9,6 +9,7 @@ use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TrabajadorController;
+use App\Http\Controllers\VehiculoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,3 +76,11 @@ Route::get('/readTrabajador', [TrabajadorController::class, 'indexTrabajador'])-
 Route::get('/Trabajadoredit/{tnum}',  [TrabajadorController::class, 'editTrabajador'])->name('editTrabajador')->middleware('auth');; //Formulario de edicion
 Route::patch('/actualizarTrab/{tnum}',[TrabajadorController::class, 'updateTrabajador'])->name('updateTrabajador')->middleware('auth');;//Guardar la edicion
 Route::delete('deleteTrabajador/{tnum}', [TrabajadorController::class,'deleteTrabajador'])->name('deleteTrabajador')->middleware('auth');; //Eliminar un trabajador
+
+/* Routes de Trabajador */
+Route::get('/formVehiculo', [VehiculoController::class, 'createVehiculo'])->name('createVehiculo')->middleware('auth');;//Formulario de Vehiculo
+Route::post('/saveVehiculo', [VehiculoController::class, 'saveVehiculo'])->name('trabajador.saveVehiculo')->middleware('auth');;//Guardar el formulario
+Route::get('/readVehiculo', [VehiculoController::class, 'indexVehiculo'])->name('indexVehiculo')->middleware('auth');;//Lista de Vehiculos
+Route::get('/Vehiculoedit/{placa}',  [VehiculoController::class, 'editVehiculo'])->name('editVehiculo')->middleware('auth');; //Formulario de edicion
+Route::patch('/actualizarVehi/{placa}',[VehiculoController::class, 'updateVehiculo'])->name('updateVehiculo')->middleware('auth');;//Guardar la edicion
+Route::delete('deleteVehiculo/{placa}', [VehiculoController::class,'deleteVehiculo'])->name('deleteVehiculo')->middleware('auth');; //Eliminar un vehiculo
