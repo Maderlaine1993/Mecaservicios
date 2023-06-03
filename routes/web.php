@@ -6,6 +6,7 @@ use App\Http\Controllers\CompraController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MecanicoController;
 use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\ReciboController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\ServicioMeController;
@@ -93,3 +94,7 @@ Route::get('/readServ_Mec', [ServicioMeController::class, 'indexServ_Mec'])->nam
 Route::get('/Serv_Mecedit/{id_serv_mec}',  [ServicioMeController::class, 'editServ_Mec'])->name('editServ_Mec')->middleware('auth');; //Formulario de edicion
 Route::patch('/actualizarServ_Mec/{id_serv_mec}',[ServicioMeController::class, 'updateServ_Mec'])->name('updateServ_Mec')->middleware('auth');;//Guardar la edicion
 Route::delete('deleteServ_Mec/{id_serv_mec}', [ServicioMeController::class,'deleteServ_Mec'])->name('deleteServ_Mec')->middleware('auth');; //Eliminar un Servicio Mecanio
+
+/* Routes de Recibo */
+Route::get('/readRecibo', [ReciboController::class, 'indexRecibo'])->name('indexRecibo')->middleware('auth');;//Vista de recibo
+Route::get('/generarPDF/{id_recibo}', [ReciboController::class, 'generarPDF'])->name('generarPDF')->middleware('auth');//Para generar boleta en PDF

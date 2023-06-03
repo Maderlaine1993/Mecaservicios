@@ -94,7 +94,7 @@
                             <br>
                             <br>
                             <div class="text-center">
-                                <a href="/readServ_Mec">
+                                <a href="/readRecibo">
                                     <img src="https://i.ibb.co/41bV4kf/Recibo.png" width="100" height="100">
                                 </a>
                                 <h5>Recibos</h5>
