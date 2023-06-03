@@ -28,7 +28,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #184aa1">
+<body style="background-color:  #6b93da">
     <div id="app">
 
         <nav class="">
@@ -36,7 +36,7 @@
                 @auth
                     <div class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-door-open" style="color: #cccccc; font-size: 35px"></i>
+                            <i class="fas fa-power-off" style="color: #000000; font-size: 30px"> {{ Auth::user()->tnombre }}</i>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
