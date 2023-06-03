@@ -2,37 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\rol;
 use App\Models\trabajador;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TrabajadorController extends Controller
 {
 
     public function indexTrabajador()
     {
-        $trabajador = trabajador::paginate(10);//el numero de filas
+        $trabajador = DB::table('trabajador')
+            ->join('rol','rol.id_rol', '=', 'trabajador.rol_id')
+            ->select('trabajador.*', 'rol.descripcion')
+            ->paginate(10);//el numero de filas
+
         return view('trabajador.viewTrabajador', compact('trabajador'));
     }
 
 
     public function createTrabajador()
     {
-        return view('trabajador.formTrabajador');
+        $rol = rol::all();
+
+        return view('trabajador.formTrabajador', compact('rol'));
     }
 
-  
+
     public function saveTrabajador(Request $request)
     {
         $trabajador = $this->validate($request, [
-            "tnum"         => "required",
             "contrasenia"  => "required",
             "tnombre"      => "required",
             "tapellido"    => "required",
-            "rol_id"       => "required",      
+            "rol_id"       => "required",
         ]);
 
         trabajador::create([
-            "tnum"           => $trabajador["tnum"],
             "contrasenia"    => $trabajador["contrasenia"],
             "tnombre"        => $trabajador["tnombre"],
             "tapellido"      => $trabajador["tapellido"],
@@ -41,12 +47,13 @@ class TrabajadorController extends Controller
 
         return redirect('/readTrabajador')->with('Guardado', "Trabajador Registrado");
     }
- 
+
     public function editTrabajador($tnum)
     {
         $trabajador = trabajador::findOrFail($tnum);
+        $rol=rol::all();
 
-        return view('trabajador.modifyTrabajador', compact('trabajador'));
+        return view('trabajador.modifyTrabajador', compact('trabajador', 'rol'));
     }
 
 

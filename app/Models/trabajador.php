@@ -8,8 +8,9 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class trabajador extends Model implements Authenticatable
 {
-    
+
     protected $table = 'trabajador';
+    public $timestamps=false;
     protected $primaryKey = 'tnum';
     protected $fillable = [
         'tnum', 'contrasenia', 'tnombre', 'tapellido', 'rol_id'

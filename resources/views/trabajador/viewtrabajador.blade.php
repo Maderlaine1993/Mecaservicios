@@ -47,7 +47,7 @@
                         <th style="background-color: #a4c2f4">Contraseña</th>
                         <th style="background-color: #a4c2f4">Nombre</th>
                         <th style="background-color: #a4c2f4">Apellido</th>
-                        <th style="background-color: #a4c2f4">Rol ID</th>
+                        <th style="background-color: #a4c2f4">Rol</th>
                         <th style="background-color: #a4c2f4">Acciones</th>
                     </tr>
                     </thead>
@@ -59,7 +59,7 @@
                             <td>{{$trabajadores->contrasenia}}</td>
                             <td>{{$trabajadores->tnombre}}</td>
                             <td>{{$trabajadores->tapellido}}</td>
-                            <td>{{$trabajadores->rol_id}}</td>
+                            <td>{{$trabajadores->descripcion}}</td>
                             <td>
                                 <div class="btn btn-group">
 
