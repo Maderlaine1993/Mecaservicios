@@ -94,7 +94,7 @@
                     <br>
                     <br>
                     <div class="text-center">
-                        <a href="#">
+                        <a href="/readServ_Mec">
                             <img src="https://i.ibb.co/6YHt7v1/Servicios-Mecanicos.png" width="100" height="100">
                         </a>
                         <h5>Servicios-Mecanicos</h5>

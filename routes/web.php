@@ -8,6 +8,7 @@ use App\Http\Controllers\MecanicoController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\ServicioMeController;
 use App\Http\Controllers\TrabajadorController;
 use App\Http\Controllers\VehiculoController;
 use Illuminate\Support\Facades\Route;
@@ -77,10 +78,18 @@ Route::get('/Trabajadoredit/{tnum}',  [TrabajadorController::class, 'editTrabaja
 Route::patch('/actualizarTrab/{tnum}',[TrabajadorController::class, 'updateTrabajador'])->name('updateTrabajador')->middleware('auth');;//Guardar la edicion
 Route::delete('deleteTrabajador/{tnum}', [TrabajadorController::class,'deleteTrabajador'])->name('deleteTrabajador')->middleware('auth');; //Eliminar un trabajador
 
-/* Routes de Trabajador */
+/* Routes de Vehiculo */
 Route::get('/formVehiculo', [VehiculoController::class, 'createVehiculo'])->name('createVehiculo')->middleware('auth');;//Formulario de Vehiculo
 Route::post('/saveVehiculo', [VehiculoController::class, 'saveVehiculo'])->name('trabajador.saveVehiculo')->middleware('auth');;//Guardar el formulario
 Route::get('/readVehiculo', [VehiculoController::class, 'indexVehiculo'])->name('indexVehiculo')->middleware('auth');;//Lista de Vehiculos
 Route::get('/Vehiculoedit/{placa}',  [VehiculoController::class, 'editVehiculo'])->name('editVehiculo')->middleware('auth');; //Formulario de edicion
 Route::patch('/actualizarVehi/{placa}',[VehiculoController::class, 'updateVehiculo'])->name('updateVehiculo')->middleware('auth');;//Guardar la edicion
 Route::delete('deleteVehiculo/{placa}', [VehiculoController::class,'deleteVehiculo'])->name('deleteVehiculo')->middleware('auth');; //Eliminar un vehiculo
+
+/* Routes de Servicio Mecanico */
+Route::get('/formServ_Mec', [ServicioMeController::class, 'createServ_Mec'])->name('createServ_Mec')->middleware('auth');;//Formulario de Servicio Mecanico
+Route::post('/saveServ_Mec', [ServicioMeController::class, 'saveServ_Mec'])->name('Serv_Mec.saveServ_Mec')->middleware('auth');;//Guardar el formulario
+Route::get('/readServ_Mec', [ServicioMeController::class, 'indexServ_Mec'])->name('indexServ_Mec')->middleware('auth');;//Lista de Servicio Mecanico
+Route::get('/Serv_Mecedit/{id_serv_mec}',  [ServicioMeController::class, 'editServ_Mec'])->name('editServ_Mec')->middleware('auth');; //Formulario de edicion
+Route::patch('/actualizarServ_Mec/{id_serv_mec}',[ServicioMeController::class, 'updateServ_Mec'])->name('updateServ_Mec')->middleware('auth');;//Guardar la edicion
+Route::delete('deleteServ_Mec/{id_serv_mec}', [ServicioMeController::class,'deleteServ_Mec'])->name('deleteServ_Mec')->middleware('auth');; //Eliminar un Servicio Mecanio
